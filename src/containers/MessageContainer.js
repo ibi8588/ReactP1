@@ -21,7 +21,7 @@ class MessageContainer extends Component {
       console.log(this.state.messages)
     return(
       <div>
-        { this.state.messages.map((message) => <Message title={message.title} />) }
+        { this.state.messages.map((message) => <Message title={message.title} src={message.imgURL} />) }
       </div>
     )
   }
