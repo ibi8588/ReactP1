@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import $ from 'jquery-ajax'
+import Message from '../components/Message'
 
-class Message extends Component {
+class MessageContainer extends Component {
     constructor(props) {
       super(props)
       this.state = {
@@ -9,7 +10,7 @@ class Message extends Component {
       }
     }
     componentDidMount() {
-      $.get("https://boiling-earth-58583.herokuapp.com/api/messages")
+      $.get("/api/messages")
       .then((res)=> {
         this.setState({
           messages: res
@@ -17,9 +18,9 @@ class Message extends Component {
       });
     }
     render() {
+      console.log(this.state.messages)
     return(
       <div>
-        <h1>{this.props.params.message_title}</h1>
         { this.state.messages.map((message) => <Message title={message.title} />) }
       </div>
     )
@@ -34,4 +35,4 @@ class Message extends Component {
   // }
 
 }
-export default Message
+export default MessageContainer
